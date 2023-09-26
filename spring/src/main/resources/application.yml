@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: development
+  datasource:
+    url: jdbc:mysql://mysql/SPRING?characterEncoding=UTF-8
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      data-source-properties.useUnicode: true
+      data-source-properties.characterEncoding: UTF-8

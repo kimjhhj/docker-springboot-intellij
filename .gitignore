@@ -1,0 +1,5 @@
+.vscode/settings.json
+mysql/data
+mysql/initdb.d/*
+.idea/*
+.env

@@ -1,0 +1,25 @@
+spring:
+  config:
+    use-legacy-processing: true
+  profiles:
+    active: development
+  datasource:
+    url: jdbc:mysql://mysql/SPRING?characterEncoding=UTF-8
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      data-source-properties.useUnicode: true
+      data-source-properties.characterEncoding: UTF-8
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  devtools:
+    livereload:
+      enabled: true
+    remote:
+      restart:
+        enabled: true
+#    restart:
+#      additional-paths: .
+#      trigger-file: reload.txt

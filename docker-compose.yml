@@ -1,0 +1,36 @@
+version: "3"
+services:
+  spring:
+    build:
+      context: ./spring
+      dockerfile: Dockerfile
+    container_name: spring
+    env_file: .env
+    environment:
+      - ENV=development
+    restart: always
+    volumes:
+      - "./spring:/usr/src/spring"
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+  mysql:
+    image: "mysql:8.0.21"
+    logging:
+      driver: none
+    restart: always
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    env_file:
+      - ./.env
+    volumes:
+      - ./mysql/conf.d:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib//mysql
+      - ./mysql/initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: spring
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
